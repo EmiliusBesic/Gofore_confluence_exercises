@@ -45,21 +45,21 @@ def compare(first_comp, second_comp):
     if first_comp == 'gt':
         int(second_comp)
         if result > second_comp:
-            print(result+' On suurempi kuin '+second_comp)
+            print(f'{result} on suurempi kuin {second_comp}')
         else:
-            print(result+' ei ole suurempi kuin '+second_comp)
+            print(f'{result} ei ole suurempi kuin {second_comp}')
     elif first_comp == 'lt':
         int(second_comp)
         if result < second_comp:
-            print(result+' On pienempi kuin '+second_comp)
+            print(f'{result} on pienempi kuin {second_comp}')
         else:
-            print(result+' ei ole pienempi kuin '+second_comp)
+            print(f'{result} ei ole pienempi kuin {second_comp}')
     elif first_comp == 'eq':
         int(second_comp[1])
         if result == second_comp:
-            print(result+' On yhtäsuuri kuin '+second_comp)
+            print(f'{result} on yhtäsuuri kuin {second_comp}')
         else:
-            print(result+' ei ole yhtäsuuri kuin '+second_comp)
+            print(f'{result} ei ole yhtäsuuri kuin {second_comp}')
     else:
         raise ValueError('give arguments:gt,lt or eq')
 

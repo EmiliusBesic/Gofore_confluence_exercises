@@ -9,10 +9,13 @@ def add_arguments():
     args = parser.parse_args()
     a_file = args.file_name
     operation = args.operation
-    first_comp = args.comp[0]
-    second_comp = args.comp[1]
+    comp = 'no'
+    comp_value = 'no'
+    if args.comp != None:
+        comp = args.comp[0]
+        comp_value = args.comp[1]
 
-    return a_file, operation, first_comp, second_comp
+    return a_file, operation, comp, comp_value
 
 
 def get_file_contents(a_file):
@@ -41,32 +44,33 @@ def calculate_and_print_results(operation, numbers):
     return op_result
 
 
-def compare(first_comp, second_comp):
-    if first_comp == 'gt':
-        int(second_comp)
-        if result > second_comp:
-            print(f'{result} on suurempi kuin {second_comp}')
+def compare(comp, comp_value):
+    if comp != 'no':
+        if comp == 'gt':
+            int(comp_value)
+            if result > comp_value:
+                print(f'{result} on suurempi kuin {comp_value}')
+            else:
+                print(f'{result} ei ole suurempi kuin {comp_value}')
+        elif comp == 'lt':
+            int(comp_value)
+            if result < comp_value:
+                print(f'{result} on pienempi kuin {comp_value}')
+            else:
+                print(f'{result} ei ole pienempi kuin {comp_value}')
+        elif comp == 'eq':
+            int(comp_value)
+            if result == comp_value:
+                print(f'{result} on yhtäsuuri kuin {comp_value}')
+            else:
+                print(f'{result} ei ole yhtäsuuri kuin {comp_value}')
         else:
-            print(f'{result} ei ole suurempi kuin {second_comp}')
-    elif first_comp == 'lt':
-        int(second_comp)
-        if result < second_comp:
-            print(f'{result} on pienempi kuin {second_comp}')
-        else:
-            print(f'{result} ei ole pienempi kuin {second_comp}')
-    elif first_comp == 'eq':
-        int(second_comp[1])
-        if result == second_comp:
-            print(f'{result} on yhtäsuuri kuin {second_comp}')
-        else:
-            print(f'{result} ei ole yhtäsuuri kuin {second_comp}')
-    else:
-        raise ValueError('give arguments:gt,lt or eq')
+            raise ValueError('give arguments:gt,lt or eq')
 
 
 if __name__ == "__main__":
 
-    a_file, operation, first_comp, second_comp = add_arguments()
+    a_file, operation, comp, comp_value = add_arguments()
     numbers = get_file_contents(a_file)
     result = calculate_and_print_results(operation,numbers)
-    compare(first_comp, second_comp)
+    compare(comp, comp_value)
